@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-base-100 text-base-content;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Typography hierarchy with proper contrast */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-base-content tracking-tight;
+  }
+
+  h1 { @apply text-h1; }
+  h2 { @apply text-h2; }
+  h3 { @apply text-h3; }
+  h4 { @apply text-h4; }
+  h5 { @apply text-h5; }
+
+  /* Improve link accessibility */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Better focus states for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  /* Subtle card style for minimal design */
+  .card-minimal {
+    @apply bg-base-100 border border-base-300 rounded-xl;
+    @apply transition-all duration-300;
+  }
+
+  .card-minimal:hover {
+    @apply border-base-content/20 shadow-lg;
+  }
+
+  /* Text that adapts to theme with proper contrast */
+  .text-primary-adaptive {
+    @apply text-ink-800 dark:text-ink-50;
+  }
+
+  .text-secondary-adaptive {
+    @apply text-ink-500 dark:text-ink-300;
+  }
+
+  /* Accent text for links/highlights */
+  .text-accent-adaptive {
+    @apply text-accent-DEFAULT dark:text-accent-light;
+  }
+
+  /* Card hover effect - subtle */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
