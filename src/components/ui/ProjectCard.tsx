@@ -15,11 +15,19 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="card bg-base-100 border border-base-300 hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
     >
-      {/* Image Placeholder - minimal design */}
-      <figure className="aspect-video bg-base-200">
-        <div className="flex items-center justify-center w-full h-full">
-          <span className="text-ink-300 dark:text-ink-600 text-display font-serif">{project.title.charAt(0)}</span>
-        </div>
+      {/* Thumbnail */}
+      <figure className="aspect-video bg-base-200 overflow-hidden">
+        {project.imageUrl ? (
+          <img
+            src={project.imageUrl}
+            alt={`${project.title} preview`}
+            className="w-full h-full object-contain"
+          />
+        ) : (
+          <div className="flex items-center justify-center w-full h-full">
+            <span className="text-ink-300 dark:text-ink-600 text-display font-serif">{project.title.charAt(0)}</span>
+          </div>
+        )}
       </figure>
 
       <div className="card-body">
