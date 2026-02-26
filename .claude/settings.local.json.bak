@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C:*)",
+      "WebFetch(domain:aamilonas.github.io)",
+      "Bash(gh repo view:*)",
+      "Bash(gh api:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh run list:*)",
+      "Bash(node -p:*)",
+      "Bash(npm run deploy:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git fetch:*)",
+      "Bash(node -e:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite build:*)",
+      "Bash(for img in focusflow.png notifai.jpeg translateme.png firebase-chat.png instaparse.png trivia-quiz.png memory-card.png)",
+      "Bash(do curl -sL \"https://raw.githubusercontent.com/aamilonas/aamilonas.github.io/master/public/mobile/$img\" -o \"$img\")",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(npx vite:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}

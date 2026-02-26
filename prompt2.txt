@@ -1,0 +1,69 @@
+# Claude Code Prompt — GitHub Portfolio Auto-Population
+
+## Context
+I have a live portfolio site (React/Next.js) already running. I need you to auto-populate my **Mobile Apps** page (and any other relevant project pages) with real data pulled from my GitHub repos. Here's a screenshot of the current page for reference — it uses dark card-based layouts with project thumbnails, descriptions, tech tags, and "View on GitHub" links.
+
+## GitHub Repos to Add
+<!-- REPLACE THESE WITH YOUR ACTUAL REPOS -->
+1. https://github.com/aamilonas/fau-ios-final-project
+2. https://github.com/aamilonas/fau-ios-project-6
+3. https://github.com/aamilonas/fau-ios-lab-6
+4. https://github.com/aamilonas/fau-ios-lab-3
+5. https://github.com/aamilonas/NotificationsApp
+6. https://github.com/aamilonas/fau-ios-project-5
+7. https://github.com/aamilonas/fau-ios-project-4
+8. 
+
+## Requirements
+
+### 1. Fetch Project Data from GitHub
+- For each repo above, read the **README.md** via the GitHub API (or raw URL).
+- Extract the following from each README:
+  - **Project title** (from the H1 or repo name)
+  - **Description**: Summarize the README into a **100–200 word** description. Keep it professional and highlight key features, metrics, and what makes the project notable.
+  - **GIF(s)**: Find all `.gif` image URLs embedded in the README. These will be used for hover previews.
+  - **Tech stack / tools used**: Look for any "Built With", "Tech Stack", "Dependencies" section, or parse the repo's `package.json`, `Podfile`, `build.gradle`, `pubspec.yaml`, or equivalent to extract frameworks, languages, and libraries (e.g., Swift, Firebase, SwiftUI, HealthKit, Flutter, React Native, etc.).
+  - **GitHub URL**: The repo link itself.
+
+### 2. Project Card Behavior
+Each project should render as a card matching my existing design (dark background, rounded corners, blue accent tags). The card must include:
+- **Thumbnail area**: Show the **first letter of the project name** as a fallback (like the current design). BUT — if GIFs were found in the README, on **mouse hover** over the card, play the first GIF as an animated preview in the thumbnail area. On mouse leave, return to the static fallback.
+- **Title**: Bold, below the thumbnail.
+- **Description**: The 100–200 word AI-generated summary.
+- **Metric/feature tags**: Highlighted blue pill tags for key features or metrics pulled from the description (e.g., "Real-time sync", "94% accuracy"). Pick 2–3 standout items.
+- **Tech stack tags**: Gray pill tags listing each technology/framework used.
+- **"View on GitHub" button**: Links to the repo URL. Opens in a new tab.
+
+### 3. Admin Dialog / Add Project UI
+- Check if there's an existing admin dialog, form, or CMS mechanism in the codebase for adding projects manually.
+- **If one exists**: Make sure it supports all the fields above (title, description, GIFs, tech tags, GitHub URL, category/page).
+- **If one does NOT exist**: Create a simple admin dialog/modal component that lets me:
+  - Paste a GitHub repo URL
+  - Auto-fetch and populate all fields from the README
+  - Edit any field before saving
+  - Choose which portfolio page/category to add it to (Mobile Apps, Software, Data Analytics)
+  - Save to the project data store (JSON file, database, or wherever projects are currently stored)
+
+### 4. Data Storage
+- Look at how projects are currently stored in the codebase (likely a JSON file, array of objects, or database).
+- Add the new projects to that same data source in the same format.
+- If no structured data source exists, create a `projects.json` (or similar) and refactor the page to read from it.
+
+### 5. Matching Existing Design
+- **Do not change the existing design system.** Match the current card style, typography, colors, spacing, and layout exactly.
+- Keep the responsive 3-column grid layout.
+- Maintain dark theme styling with blue accents for feature tags.
+
+## Implementation Order
+1. First, explore the codebase to understand the project structure, how pages are routed, and where project data lives.
+2. Fetch and parse all README files from the repos listed above.
+3. Generate summaries and extract metadata.
+4. Add project data to the data store.
+5. Implement GIF hover preview on cards.
+6. Build or extend the admin dialog for future project additions.
+7. Test that everything renders correctly and matches the existing design.
+
+## Important Notes
+- Do NOT break any existing projects already on the page — only ADD new ones.
+- If you need a GitHub API token for rate limits, ask me before proceeding.
+- Preserve all existing functionality (dark mode toggle, navigation, etc.).
