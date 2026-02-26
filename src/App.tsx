@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Software from './pages/Software'
 import MobileApps from './pages/MobileApps'
 import DataAnalytics from './pages/DataAnalytics'
+import AddProjectDialog from './components/ui/AddProjectDialog'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Routes>
         </AnimatePresence>
       </Layout>
+      <AddProjectDialog />
     </Router>
   )
 }

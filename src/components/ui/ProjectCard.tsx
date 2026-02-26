@@ -18,7 +18,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       {/* Image */}
       <figure className="aspect-video bg-base-200">
         {project.imageUrl ? (
-          <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+          <img src={project.imageUrl} alt={project.title} className="w-full h-full object-contain" />
         ) : (
           <div className="flex items-center justify-center w-full h-full">
             <span className="text-ink-300 dark:text-ink-600 text-display font-serif">{project.title.charAt(0)}</span>
