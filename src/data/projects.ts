@@ -4,11 +4,22 @@ export interface Project {
   description: string
   techStack: string[]
   githubUrl: string
+  projectUrl?: string
   imageUrl?: string
   metrics?: string[]
 }
 
 export const softwareProjects: Project[] = [
+  {
+    id: 'ai-market-oracle',
+    title: 'AI Market Oracle',
+    description: 'Automated platform that pits five AI models against each other in daily stock market predictions. Each model researches live market conditions and makes falsifiable predictions before market open, scored against real closing data. Features a public leaderboard tracking which AI is the best forecaster over time.',
+    techStack: ['React', 'Python', 'GitHub Actions', 'Recharts', 'Vite'],
+    githubUrl: 'https://github.com/aamilonas/ai-market-oracle',
+    projectUrl: 'https://aamilonas.github.io/ai-market-oracle/',
+    imageUrl: '/ai-market-oracle.png',
+    metrics: ['5 AI models competing', 'Automated daily predictions', 'Real market scoring']
+  },
   {
     id: 'distributed-task-scheduler',
     title: 'Distributed Task Scheduler',

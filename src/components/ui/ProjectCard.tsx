@@ -15,11 +15,15 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="card bg-base-100 border border-base-300 hover:border-primary/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
     >
-      {/* Image Placeholder - minimal design */}
+      {/* Image */}
       <figure className="aspect-video bg-base-200">
-        <div className="flex items-center justify-center w-full h-full">
-          <span className="text-ink-300 dark:text-ink-600 text-display font-serif">{project.title.charAt(0)}</span>
-        </div>
+        {project.imageUrl ? (
+          <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="flex items-center justify-center w-full h-full">
+            <span className="text-ink-300 dark:text-ink-600 text-display font-serif">{project.title.charAt(0)}</span>
+          </div>
+        )}
       </figure>
 
       <div className="card-body">
@@ -57,15 +61,28 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
         {/* Actions */}
         <div className="card-actions justify-end mt-4">
+          {project.projectUrl && (
+            <motion.a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm gap-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View Project
+              <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+            </motion.a>
+          )}
           <motion.a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary btn-sm gap-2"
+            className={`btn btn-sm gap-2 ${project.projectUrl ? 'btn-outline btn-primary' : 'btn-primary'}`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            View on GitHub
+            GitHub
             <ArrowTopRightOnSquareIcon className="h-4 w-4" />
           </motion.a>
         </div>
